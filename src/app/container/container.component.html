@@ -1,0 +1,39 @@
+<!-- // NgFor Directive which means it is used for removing and adding the elements in DOM -->
+<!-- <p>NgFor Directive</p>
+
+<div *ngFor="let item of [1,2,4,9,8]"> 
+    <div>paragraph no: {{ item}}</div>
+</div> -->
+<!-- The index means it show the index of the items iterations -->
+<!-- // ng class -->
+<!-- <div class="alert alert-success" [hidden]="displayNotification"> -->
+<div class="alert alert-success" [ngClass]="{fadeOut: displayNotification}">
+
+    This website uses cookies to provide better user experience.
+    <div class="close">
+        <button class="btn" (click)="closeEvent()">X</button>
+    </div>
+
+</div>
+<div class="div-search" [ngClass]="{bgcolor : searchValue != ''}">
+    <span><b>Search</b></span>
+    <input type="text" [(ngModel)]="searchValue">
+    <span *ngIf="searchValue !== '' ">You Searched for {{ searchValue }}</span>
+</div>
+<div>
+    <div *ngFor="let items of products ; let i = index" [ngStyle]="{ backgroundColor : items.status === 'Available' ? '#d5f5e3' : '#4934e3'}">
+        <p>{{ i}}</p>
+        NAME : {{items.name}}<br>AGE :{{items.age}}
+        <div class="detatils" [ngStyle]="{ color : items.status === 'Available' ? 'Green' : 'Red'} ">{{ items.status }}</div>
+
+        <div>
+            <button class="btn btn-success">Show Details</button>
+            <button class="btn btn-success" *ngIf="items.status === 'Available' ; else notifyme">Buy Now</button>
+            <ng-template #notifyme>
+                <button>Notify me</button>
+            </ng-template>
+
+        </div>
+    </div>
+
+</div>

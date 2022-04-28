@@ -1,0 +1,41 @@
+.course-container {
+    display: inline-flex;
+    padding: 10px;
+}
+
+.course-card {
+    width: 220px;
+    height: 320px;
+    margin: 10px 10px;
+    background-color: aliceblue
+}
+
+.course-name {
+    text-align: center;
+}
+
+.des {
+    margin: 10px 0px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.type {
+    width: 50%;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn {
+    width: 100px;
+}
