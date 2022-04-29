@@ -72,4 +72,13 @@ export class CoursesComponent implements OnInit {
  getPremium(){
    return this.courses.filter(course => course.type === 'Premium').length;
  }
+
+ //Custom Event Binding or Output decorator
+ countradioselected : string = 'All'
+
+ onparentemit( event: any){
+   this.countradioselected = event;
+   console.log(this.countradioselected)
+ }
+
  }

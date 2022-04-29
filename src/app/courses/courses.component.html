@@ -4,22 +4,24 @@
 <div>
     <!-- THIS FILTER COMPONENT IS CHILD COMPONENT FOR COURSES COMPONENT[PARNT COMPONENT] -->
     <!-- we have to create a Custom property  binding  -->
-    <app-filter [total]="getTotal()" [free]="getFree()" [premium]="getPremium()"></app-filter>
+    <app-filter [total]="getTotal()" [free]="getFree()" [premium]="getPremium()" (radiochange)="onparentemit($event)"></app-filter>
 </div>
-<div class="course-container" *ngFor="let course of courses">
-    <div class="course-card">
-        <div class="card-image">
-            <img [src]="course.image">
-        </div>
-        <div class="course-name p-1">{{course.name}}</div>
-        <div class="des">{{ course.description}}</div>
-        <div class="details">
-            <div class="types" [ngStyle]="{color : course.type === 'Free' ? 'Green' : 'Red'}">{{course.type}}</div>
-            <div class="price"><b>Price:</b>{{ course.price}}</div>
-        </div>
-        <div class="button">
-            <button type="button" class="btn btn-success">BUY</button>
-            <button type="button" class="btn btn-light">SHOW</button>
+<ng-container *ngFor="let course of courses">
+    <div class="course-container" *ngIf="countradioselected === 'All' ||  countradioselected === course.type">
+        <div class="course-card">
+            <div class="card-image">
+                <img [src]="course.image">
+            </div>
+            <div class="course-name p-1">{{course.name}}</div>
+            <div class="des">{{ course.description}}</div>
+            <div class="details">
+                <div class="types" [ngStyle]="{color : course.type === 'Free' ? 'Green' : 'Red'}">{{course.type}}</div>
+                <div class="price"><b>Price:</b>{{ course.price}}</div>
+            </div>
+            <div class="button">
+                <button type="button" class="btn btn-success">BUY</button>
+                <button type="button" class="btn btn-light">SHOW</button>
+            </div>
         </div>
     </div>
-</div>
+</ng-container>

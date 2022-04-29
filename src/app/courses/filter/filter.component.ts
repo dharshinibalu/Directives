@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -12,8 +12,17 @@ export class FilterComponent implements OnInit {
  @Input() free : number =0;
  @Input() premium : number = 0;
 
-
+// create a proporty of input value and bind it with html file using Two way data binding
+ selectedbuttonRadio : string = 'All'
   constructor() { }
+
+  @Output() radiochange : EventEmitter<string> = new EventEmitter<string>();
+
+  childraise(){
+
+     this.radiochange.emit(this.selectedbuttonRadio)
+     console.log(this.selectedbuttonRadio)
+  }
 
   ngOnInit(): void {
   }

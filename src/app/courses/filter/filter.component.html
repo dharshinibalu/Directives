@@ -1,11 +1,11 @@
 <div class="fil-container">
     <span>Filter :</span>
-    <input type="radio" name="filter" value="All">
+    <input type="radio" name="filter" value="All" [(ngModel)]="selectedbuttonRadio" (change)="childraise()">
     <span>{{ 'All Courses('+all+')'}}</span>
 
-    <input type="radio" name="filter" value="Available">
+    <input type="radio" name="filter" value="Free" [(ngModel)]="selectedbuttonRadio" (change)="childraise()">
     <span>{{ 'Free Courses('+free+')'}}</span>
 
-    <input type="radio" name="filter" value="Not Available">
+    <input type="radio" name="filter" value="Premium" [(ngModel)]="selectedbuttonRadio" (change)="childraise()">
     <span>{{ 'Premium Courses('+premium+')'}}</span>
 </div>
