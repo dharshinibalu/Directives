@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+export interface course {
+  id : number;
+  name : string,
+  author : string,
+  duration : number,
+  type : number,
+  price : number,
+  ratings : number,
+  image : string,
+  description : string
+}
 
 @Component({
   selector: 'app-courses',
@@ -52,5 +63,13 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-}
+   getTotal(){
+     return this.courses.length;
+   }
+ getFree(){
+   return this.courses.filter(course => course.type === 'Free').length;
+ }
+ getPremium(){
+   return this.courses.filter(course => course.type === 'Premium').length;
+ }
+ }

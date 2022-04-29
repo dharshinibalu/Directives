@@ -1,7 +1,15 @@
+<div>
+    <app-search></app-search>
+</div>
+<div>
+    <!-- THIS FILTER COMPONENT IS CHILD COMPONENT FOR COURSES COMPONENT[PARNT COMPONENT] -->
+    <!-- we have to create a Custom property  binding  -->
+    <app-filter [total]="getTotal()" [free]="getFree()" [premium]="getPremium()"></app-filter>
+</div>
 <div class="course-container" *ngFor="let course of courses">
     <div class="course-card">
-        <div>
-            <img [src]="course.image" style="width: 250px; height:140px;">
+        <div class="card-image">
+            <img [src]="course.image">
         </div>
         <div class="course-name p-1">{{course.name}}</div>
         <div class="des">{{ course.description}}</div>
