@@ -1,27 +1,34 @@
-<div>
-    <app-search></app-search>
-</div>
-<div>
-    <!-- THIS FILTER COMPONENT IS CHILD COMPONENT FOR COURSES COMPONENT[PARNT COMPONENT] -->
-    <!-- we have to create a Custom property  binding  -->
-    <app-filter [total]="getTotal()" [free]="getFree()" [premium]="getPremium()" (radiochange)="onparentemit($event)"></app-filter>
-</div>
-<ng-container *ngFor="let course of courses">
-    <div class="course-container" *ngIf="countradioselected === 'All' ||  countradioselected === course.type">
-        <div class="course-card">
-            <div class="card-image">
-                <img [src]="course.image">
-            </div>
-            <div class="course-name p-1">{{course.name}}</div>
-            <div class="des">{{ course.description}}</div>
-            <div class="details">
-                <div class="types" [ngStyle]="{color : course.type === 'Free' ? 'Green' : 'Red'}">{{course.type}}</div>
-                <div class="price"><b>Price:</b>{{ course.price}}</div>
-            </div>
-            <div class="button">
-                <button type="button" class="btn btn-success">BUY</button>
-                <button type="button" class="btn btn-light">SHOW</button>
-            </div>
+<div class="container-fluid">
+    <div class="fields d-flex flex-column justify-content-around align-items-center">
+        <div class="p-3">
+            <app-search (searchTextchange)="methodsearch($event)"></app-search>
+        </div>
+        <div class="p-3">
+            <!-- THIS FILTER COMPONENT IS CHILD COMPONENT FOR COURSES COMPONENT[PARNT COMPONENT] -->
+            <!-- we have to create a Custom property  binding  -->
+            <app-filter [total]="getTotal()" [free]="getFree()" [premium]="getPremium()" (radiochange)="onparentemit($event)"></app-filter>
         </div>
     </div>
-</ng-container>
+
+    <ng-container *ngFor="let course of courses">
+        <div class="course-container" *ngIf="countradioselected === 'All' ||  countradioselected === course.type">
+            <div class="course-container" *ngIf="serachvalue === '' || course.name.toLowerCase().includes(serachvalue)">
+                <div class="course-card">
+                    <div class="card-image">
+                        <img [src]="course.image">
+                    </div>
+                    <div class="course-name p-1">{{course.name}}</div>
+                    <div class="des text-center">{{ course.description}}</div>
+                    <div class="details">
+                        <div class="types" [ngStyle]="{color : course.type === 'Free' ? 'Green' : 'Red'}">{{course.type}}</div>
+                        <div class="price"><b>Price:</b>{{ course.price}}</div>
+                    </div>
+                    <div class="button">
+                        <button type="button" class="btn btn-success">BUY</button>
+                        <button type="button" class="btn btn-light">SHOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

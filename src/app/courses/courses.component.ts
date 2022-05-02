@@ -80,5 +80,11 @@ export class CoursesComponent implements OnInit {
    this.countradioselected = event;
    console.log(this.countradioselected)
  }
+// For search - custon event binding
 
+serachvalue : string = ''
+
+methodsearch(searchvalues : string){
+  this.serachvalue = searchvalues;
+}
  }
